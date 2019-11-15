@@ -1,5 +1,7 @@
 <?php
 
+//Вариант 1 Изначально решил выбрать вариант, где используется библиотечная функция, которая отлажена и оптимизирована разработчиками PHP
+
 class Cutter {
     public static $maxlen = 0;
 
@@ -42,12 +44,18 @@ class Cutter {
             }
         }
 
+        //Отладочный вывод
         echo "maxlen = " . self::$maxlen . "\n";
         echo "endIndex = {$endIndex}\n";        
+
+
         return substr($str, 0, $endIndex);
     }
 };
 
+
+
+//Вариант номер 2 , еще не доделал, если попросите, потом доделаю 2 вариант, есть на уме еще третий. Просто спешу вам выслать то, что уже работает (вариант 1)
 class Cutter2 {
     public static $maxlen = 0;
 
@@ -85,30 +93,30 @@ MSTRING;
 
 
 //Различный набор значений для тестирования
-Cutter2::$maxlen = 74;
-echo "short string = '" . Cutter2::cut($mstring) . "'" .  "\n\n";
+Cutter::$maxlen = 74;
+echo "short string = '" . Cutter::cut($mstring) . "'" .  "\n\n";
 
-Cutter2::$maxlen = 23;
-echo "short string = '" . Cutter2::cut($mstring) . "'" .  "\n\n";
+Cutter::$maxlen = 23;
+echo "short string = '" . Cutter::cut($mstring) . "'" .  "\n\n";
 
-Cutter2::$maxlen = 24;
-echo "short string = '" . Cutter2::cut($mstring) . "'" .  "\n\n";
+Cutter::$maxlen = 24;
+echo "short string = '" . Cutter::cut($mstring) . "'" .  "\n\n";
 
-Cutter2::$maxlen = 1;
-echo "short string = '" . Cutter2::cut($mstring) . "'" .  "\n\n";
+Cutter::$maxlen = 1;
+echo "short string = '" . Cutter::cut($mstring) . "'" .  "\n\n";
 
 
 //Краевые значения
-Cutter2::$maxlen = strlen($mstring);
-echo "short string = '" . Cutter2::cut($mstring) . "'" .  "\n\n";
+Cutter::$maxlen = strlen($mstring);
+echo "short string = '" . Cutter::cut($mstring) . "'" .  "\n\n";
 
-Cutter2::$maxlen = 0;
-echo "short string = '" . Cutter2::cut($mstring) . "'" .  "\n";
+Cutter::$maxlen = 0;
+echo "short string = '" . Cutter::cut($mstring) . "'" .  "\n";
 
 
-Cutter2::$maxlen = 74;
+Cutter::$maxlen = 74;
 $start = microtime(true);
-$cut = Cutter2::cut($mstring);
+$cut = Cutter::cut($mstring);
 $stop = microtime(true);
 
 echo "cutter speed is " . ($stop - $start) . "seconds\n";
